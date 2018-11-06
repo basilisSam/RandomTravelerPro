@@ -8,112 +8,75 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="119dp"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/spinner"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:text="Search" />
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="101dp"
+        android:text="Search"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        tools:background="#56ffff" />
 
     <EditText
-        android:id="@+id/From"
-        android:layout_width="wrap_content"
+        android:id="@+id/PriceInput"
+        android:layout_width="74dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="130dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="139dp"
-        android:text="From"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/Price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="202dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="211dp"
-        android:layout_marginEnd="0dp"
-        android:text="Price"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        android:layout_alignRight="@+id/textView"
-        android:layout_marginRight="0dp" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="97dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginBottom="166dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView"
-        android:layout_alignTop="@+id/editText3"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="8dp"
-        android:text="Days"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_marginLeft="-1dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="-4dp"
-        android:text="To"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        android:layout_alignRight="@+id/button"
-        android:layout_marginRight="39dp" />
-
-    <EditText
-        android:id="@+id/Daysto"
-        android:layout_width="149dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText3"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="-2dp"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="26dp" />
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="282dp"
+        android:layout_marginRight="282dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/DateInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/PriceInput"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="115dp"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/FromInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/DateInput"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="198dp"
+        android:layout_marginEnd="0dp"
+        android:ems="10"
+        android:hint="From"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="78dp"
+        android:layout_height="44dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="226dp"
+        android:layout_marginBottom="198dp" />
+
+    <TextView
+        android:id="@+id/PersonNumLabel"
+        android:layout_width="169dp"
+        android:layout_height="43dp"
+        android:layout_alignStart="@+id/PriceInput"
+        android:layout_alignBottom="@+id/spinner"
+        android:layout_centerInParent="false"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="1dp"
+        android:text="Passengers"
+        android:textSize="24sp" />
+
 </RelativeLayout>
