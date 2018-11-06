@@ -16,11 +16,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String pass[] = {"1","2","3","3"};
+        String pass[] = {"1","2","3","4"};
         from=(EditText)findViewById(R.id.FromInput);
-        //daysFrom=(EditText)findViewById(R.id.MinDays);
-        //daysTo=(EditText)findViewById(R.id.MaxDays);
-        price=(EditText)findViewById(R.id.Price);
+        daysFrom=(EditText)findViewById(R.id.MinDays);
+        daysTo=(EditText)findViewById(R.id.MaxDays);
+        //pame ligo
+        price=(EditText)findViewById(R.id.PriceInput);
         passengers = (Spinner)findViewById(R.id.spinner);
         final Button button = findViewById(R.id.button);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,pass);
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("daysf",daysFrom.getText().toString());
                 intent.putExtra("daysto",daysTo.getText().toString());
                 intent.putExtra("price",price.getText().toString());
+                startActivity(intent);
             }
         });
     }

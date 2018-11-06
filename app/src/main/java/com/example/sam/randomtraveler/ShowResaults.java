@@ -35,10 +35,7 @@ public class ShowResaults extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                URL url = new URL("https://api.skypicker.com/flights?fly_from="+From+"&price_to="+Price
-                        +"&nights_in_dst_from="+Daysfrom
-                        +"&nights_in_dst_to="+Daysto
-                        +"&type_flights=lcc");
+                URL url = new URL("https://api.skypicker.com/flights?fly_from="+From+"&price_to="+Price+"&nights_in_dst_from="+Daysfrom+"&nights_in_dst_to="+Daysto+"&type_flights=lcc");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
                 InputStream inputs = con.getInputStream();
