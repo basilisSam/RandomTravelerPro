@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,19 +18,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ShowResaults extends AppCompatActivity {
+    public ListView list;
     public String Daysfrom, Daysto, Price, From;
     public String Resaults="";
     public String [] data;
+    FetchApi f= new FetchApi();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resaults);
-
+        int a=0;
         Intent intent = getIntent();
-        Daysfrom = intent.getStringExtra("Fday");
-        Daysto = intent.getStringExtra("Tday");
-        Price = intent.getStringExtra("Price");
-        From = intent.getStringExtra("from");
+        Daysfrom = intent.getStringExtra("daysf");
+        Daysto = intent.getStringExtra("daysto");
+        Price = intent.getStringExtra("price");
+        From = intent.getStringExtra("From");
+        list= (ListView)findViewById(R.id.list);
+        f.execute();
+
     }
     private class FetchApi extends AsyncTask<Void,Void,Void>{
 
@@ -78,7 +86,9 @@ public class ShowResaults extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+
             super.onPostExecute(aVoid);
+            list.setAdapter(new ArrayAdapter<String>(ShowResaults.this,android.R.layout.simple_expandable_list_item_1,data));
         }
     }
 

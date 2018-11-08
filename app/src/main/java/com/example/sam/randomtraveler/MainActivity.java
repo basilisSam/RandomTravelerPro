@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         from=(EditText)findViewById(R.id.FromInput);
         daysFrom=(EditText)findViewById(R.id.MinDays);
         daysTo=(EditText)findViewById(R.id.MaxDays);
-        //pame ligo
         price=(EditText)findViewById(R.id.PriceInput);
         passengers = (Spinner)findViewById(R.id.spinner);
         final Button button = findViewById(R.id.button);
