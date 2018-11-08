@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                Intent intent = new Intent(MainActivity.this, ShowResaults.class);
-               /* intent.putExtra("From",from.getText().toString());
+                intent.putExtra("From",from.getText().toString());
                 intent.putExtra("daysf",daysFrom.getText().toString());
                 intent.putExtra("daysto",daysTo.getText().toString());
                 intent.putExtra("price",price.getText().toString());
-                */
+
                 startActivity(intent);
 
 

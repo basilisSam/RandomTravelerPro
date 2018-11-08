@@ -28,27 +28,24 @@ public class ShowResaults extends AppCompatActivity {
     public String Daysfrom, Daysto, Price, From;
     public String Resaults="";
     public String [] data;
-    public TextView textView = findViewById(R.id.testShow);
+    public TextView textView ;
    // FetchApi f= new FetchApi();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resaults);
         int a=0;
-        /*
+        textView = findViewById(R.id.testShow);
         Intent intent = getIntent();
-
         Daysfrom = intent.getStringExtra("daysf");
         Daysto = intent.getStringExtra("daysto");
         Price = intent.getStringExtra("price");
         From = intent.getStringExtra("From");
-        list= (ListView)findViewById(R.id.list);
+        list= (ListView)findViewById(R.id.printList);
         //f.execute();
-*/
-        if (a==0){
 
-        }
     }
 
     /*
@@ -110,7 +107,7 @@ public class ShowResaults extends AppCompatActivity {
     }
     */
 
-    AsyncTask asyncTask = new AsyncTask() {
+     AsyncTask asyncTask = new AsyncTask() {
 
 
 
@@ -121,7 +118,7 @@ public class ShowResaults extends AppCompatActivity {
             OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
-                    .url("https://api.skypicker.com/flights?flyFrom=PRG&to=LGW&dateFrom=18/11/2018&dateTo=12/12/2018&partner=picky").build();
+                    .url("https://api.skypicker.com/flights?fly_from="+From+"&price_to="+Price+"&nights_in_dst_from="+Daysfrom+"&nights_in_dst_to="+Daysto+"&type_flights=lcc").build();
 
             Response response = null;
 
@@ -135,13 +132,34 @@ public class ShowResaults extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            try{
+                JSONArray ja=new JSONArray(response.body().string());
+                JSONObject jo=null;
+                data=new String[ja.length()];
+
+
+                for (int i=0;i<=ja.length();i++){
+                    jo=ja.getJSONObject(i);
+                    data[i]="Απο"+" "+jo.getString("cityFrom")+" "+"Για"+" "+jo.getString("cityΤο");
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             return null;
         }
 
         @Override
         protected void onPostExecute(Object o) {
 
-            textView.setText(o.toString());
+
+            list.setAdapter(new ArrayAdapter<String>(ShowResaults.this,android.R.layout.simple_expandable_list_item_1,data));
+
+           // textView.setText(data.toString());
 
 
 
