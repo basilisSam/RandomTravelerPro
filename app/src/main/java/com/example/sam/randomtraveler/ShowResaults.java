@@ -6,12 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -22,22 +28,30 @@ public class ShowResaults extends AppCompatActivity {
     public String Daysfrom, Daysto, Price, From;
     public String Resaults="";
     public String [] data;
-    FetchApi f= new FetchApi();
+    public TextView textView = findViewById(R.id.testShow);
+   // FetchApi f= new FetchApi();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resaults);
         int a=0;
+        /*
         Intent intent = getIntent();
+
         Daysfrom = intent.getStringExtra("daysf");
         Daysto = intent.getStringExtra("daysto");
         Price = intent.getStringExtra("price");
         From = intent.getStringExtra("From");
         list= (ListView)findViewById(R.id.list);
-        f.execute();
+        //f.execute();
+*/
+        if (a==0){
 
+        }
     }
+
+    /*
     private class FetchApi extends AsyncTask<Void,Void,Void>{
 
         @Override
@@ -94,6 +108,44 @@ public class ShowResaults extends AppCompatActivity {
             list.setAdapter(new ArrayAdapter<String>(ShowResaults.this,android.R.layout.simple_expandable_list_item_1,data));
         }
     }
+    */
 
+    AsyncTask asyncTask = new AsyncTask() {
+
+
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+
+
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("https://api.skypicker.com/flights?flyFrom=PRG&to=LGW&dateFrom=18/11/2018&dateTo=12/12/2018&partner=picky").build();
+
+            Response response = null;
+
+            try{
+
+                response = client.newCall(request).execute();
+                return response.body().string();
+
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+
+            textView.setText(o.toString());
+
+
+
+        }
+    }.execute();
 
 }
