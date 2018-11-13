@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -29,7 +31,8 @@ public class ShowResaults extends AppCompatActivity {
     public String Resaults="";
     public String [] data;
     public TextView textView ;
-   // FetchApi f= new FetchApi();
+    public String json_string;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,68 +47,11 @@ public class ShowResaults extends AppCompatActivity {
         Price = intent.getStringExtra("price");
         From = intent.getStringExtra("From");
         list= (ListView)findViewById(R.id.printList);
-        //f.execute();
+
 
     }
 
-    /*
-    private class FetchApi extends AsyncTask<Void,Void,Void>{
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                URL url = new URL("https://api.skypicker.com/flights?fly_from="+From+"&price_to="+Price
-                        +"&nights_in_dst_from="+Daysfrom
-                        +"&nights_in_dst_to="+Daysto
-                        +"&type_flights=lcc");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("GET");
-                InputStream inputs = con.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(inputs));
-                String line = "";
-                StringBuilder sb= new StringBuilder();
-
-                //for Vodka
-                while((line=br.readLine())!= null){
-                    sb.append(line+"\n");
-                }
-                inputs.close();
-                Resaults=sb.toString();
-
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
-            //try parse json data
-            try{
-                JSONArray ja=new JSONArray(Resaults);
-                JSONObject jo=null;
-                data=new String[ja.length()];
-
-
-                for (int i=0;i<=ja.length();i++){
-                    jo=ja.getJSONObject(i);
-                    data[i]="Απο"+" "+jo.getString("cityFrom")+" "+"Για"+" "+jo.getString("cityΤο");
-                }
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-
-            super.onPostExecute(aVoid);
-            list.setAdapter(new ArrayAdapter<String>(ShowResaults.this,android.R.layout.simple_expandable_list_item_1,data));
-        }
-    }
-    */
 
      AsyncTask asyncTask = new AsyncTask() {
 
@@ -132,38 +78,31 @@ public class ShowResaults extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            try{
-                JSONArray ja=new JSONArray(response.body().string());
-                JSONObject jo=null;
-                data=new String[ja.length()];
-
-
-                for (int i=0;i<=ja.length();i++){
-                    jo=ja.getJSONObject(i);
-                    data[i]="Απο"+" "+jo.getString("cityFrom")+" "+"Για"+" "+jo.getString("cityΤο");
-                }
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
             return null;
         }
 
         @Override
         protected void onPostExecute(Object o) {
 
+            textView.setText(o.toString());
+            json_string=o.toString();
 
-            list.setAdapter(new ArrayAdapter<String>(ShowResaults.this,android.R.layout.simple_expandable_list_item_1,data));
 
-           // textView.setText(data.toString());
 
 
 
         }
     }.execute();
 
+public void parseJSON(View view){
+    if(json_string==null){
+        Toast.makeText(getApplicationContext(),"Not Found",Toast.LENGTH_LONG).show();
+    }
+    else
+    {
+        Intent intent = new Intent (this,ShowResaults.class);
+        intent.putExtra("json_data",json_string);
+        startActivity(intent);
+    }
+    }
 }
