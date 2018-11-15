@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="510dp">
+
+    <TextView
+        android:id="@+id/tx_from"
+        android:layout_width="195dp"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:text="From"
+        android:textAppearance="?android:textAppearanceLarge" />
+
+    <TextView
+        android:layout_width="195dp"
+        android:layout_height="75dp"
+        android:id="@+id/tx_To"
+        android:layout_toRightOf="@+id/tx_from"
+        android:text="To"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="195dp"
+        android:layout_height="75dp"
+        android:id="@+id/tx_Price"
+        android:layout_below="@+id/tx_from"
+        android:text="Price"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="195dp"
+        android:layout_height="75dp"
+        android:id="@+id/tx_DateFrom"
+        android:layout_below="@+id/tx_Price"
+        android:text="Start"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="195dp"
+        android:layout_height="75dp"
+        android:id="@+id/tx_DateTo"
+        android:layout_below="@+id/tx_DateFrom"
+        android:text="Return"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

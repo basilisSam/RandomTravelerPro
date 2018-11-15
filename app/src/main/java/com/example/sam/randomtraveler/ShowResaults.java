@@ -32,6 +32,8 @@ public class ShowResaults extends AppCompatActivity {
     public String [] data;
     public TextView textView ;
     public String json_string;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
 
 
     @Override
@@ -84,11 +86,28 @@ public class ShowResaults extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object o) {
 
-            textView.setText(o.toString());
+            //textView.setText(o.toString());
             json_string=o.toString();
+            try {
 
+                jsonObject = new JSONObject(json_string);
+                jsonArray = jsonObject.getJSONArray("data");
 
+                int count = 0;
+                String from,to,price,dateFrom,dateTo;
+                while(count <jsonArray.length())
+                {
+                    JSONObject JO = jsonArray.getJSONObject(count);
+                    from = JO.getString("cityFrom");
+                    to = JO.getString("cityTo");
+                    price = JO.getString("price");
+                    dateFrom = JO.getString("dTimeUTC");
+                    dateTo = JO.getString("dTimeUTC");
 
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
 
         }
