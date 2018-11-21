@@ -26,7 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ShowResaults extends AppCompatActivity {
-    public ListView list;
+
     public String Daysfrom, Daysto, Price, From;
     public String Resaults="";
     public String [] data;
@@ -34,6 +34,9 @@ public class ShowResaults extends AppCompatActivity {
     public String json_string;
     JSONObject jsonObject;
     JSONArray jsonArray;
+    InfoAdapter infoAdapter;
+    ListView listView;
+
 
 
     @Override
@@ -41,14 +44,16 @@ public class ShowResaults extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resaults);
-        int a=0;
+        listView = (ListView) findViewById(R.id.listview);
+        infoAdapter = new InfoAdapter(this,R.layout.row_layout);
+        listView.setAdapter(infoAdapter);
         textView = findViewById(R.id.testShow);
         Intent intent = getIntent();
         Daysfrom = intent.getStringExtra("daysf");
         Daysto = intent.getStringExtra("daysto");
         Price = intent.getStringExtra("price");
         From = intent.getStringExtra("From");
-        list= (ListView)findViewById(R.id.printList);
+
 
 
     }
@@ -103,6 +108,12 @@ public class ShowResaults extends AppCompatActivity {
                     price = JO.getString("price");
                     dateFrom = JO.getString("dTimeUTC");
                     dateTo = JO.getString("dTimeUTC");
+                    Info info = new Info(from,to,price,dateFrom,dateTo);
+
+                    infoAdapter.add(info);
+
+                    count++;
+
 
                 }
             } catch (JSONException e) {
