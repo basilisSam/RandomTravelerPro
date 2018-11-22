@@ -30,8 +30,6 @@ public class ShowResaults extends AppCompatActivity {
     public String Daysfrom, Daysto, Price, From;
     public String Resaults="";
     public String [] data;
-    public TextView textView ;
-
     public String json_string;
     JSONObject jsonObject;
     JSONArray jsonArray;
@@ -40,57 +38,20 @@ public class ShowResaults extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resaults);
-      textView = findViewById(R.id.testShow);
-        int a=0;
-
         listView = (ListView) findViewById(R.id.listview);
         infoAdapter = new InfoAdapter(this,R.layout.row_layout);
         listView.setAdapter(infoAdapter);
-        textView = findViewById(R.id.testShow);
         Intent intent = getIntent();
         Daysfrom = intent.getStringExtra("daysf");
         Daysto = intent.getStringExtra("daysto");
         Price = intent.getStringExtra("price");
         From = intent.getStringExtra("From");
-
-
-       // list= (ListView)findViewById(R.id.list);
-        //f.execute();
-
     }
-
-    /*
-   private static class FetchApi extends AsyncTask<Void,Void,Void>{
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                URL url = new URL("https://api.skypicker.com/flights?fly_from="+From+"&price_to="+Price+"&nights_in_dst_from="+Daysfrom+"&nights_in_dst_to="+Daysto+"&type_flights=lcc");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("GET");
-                InputStream inputs = con.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(inputs));
-                String line = "";
-                StringBuilder sb= new StringBuilder();
-
-                //for Vodka
-                while((line=br.readLine())!= null){
-                    sb.append(line+"\n");
-                }
-                inputs.close();
-                Resaults=sb.toString();
-=======
-        list= (ListView)findViewById(R.id.printList);
->>>>>>> 7cd01397d36b09e5ff5f3887df9f0a07e61fc513
-*/
-
-
 
 
 
@@ -118,31 +79,12 @@ public class ShowResaults extends AppCompatActivity {
             }catch (IOException e){
                 e.printStackTrace();
             }
-            try{
-                JSONArray ja=new JSONArray(response.body().string());
-                JSONObject jo=null;
-                data=new String[ja.length()];
 
-
-                for (int i=0;i<=ja.length();i++){
-                    jo=ja.getJSONObject(i);
-                    data[i]="Απο"+" "+jo.getString("cityFrom")+" "+"Για"+" "+jo.getString("cityΤο");
-                }
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             return null;
         }
 
         @Override
         protected void onPostExecute(Object o) {
-
-
-            textView.setText(data.toString());
 
             //textView.setText(o.toString());
             json_string=o.toString();
@@ -166,7 +108,6 @@ public class ShowResaults extends AppCompatActivity {
                     infoAdapter.add(info);
 
                     count++;
-
 
 
                 }
