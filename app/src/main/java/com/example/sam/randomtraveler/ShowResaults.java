@@ -32,7 +32,7 @@ public class ShowResaults extends AppCompatActivity {
     public String Daysfrom, Daysto, Price, From;
     public String Resaults="";
     public String [] data;
-    public String json_string="";
+    public String json_string;
     JSONObject jsonObject;
     JSONArray jsonArray;
     InfoAdapter infoAdapter;
@@ -46,6 +46,7 @@ public class ShowResaults extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resaults);
         MainActivity mn = new MainActivity();
+        infoAdapter = new InfoAdapter(this,R.layout.row_layout);
         listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(infoAdapter);
         //Intent intent = getIntent();
@@ -53,7 +54,6 @@ public class ShowResaults extends AppCompatActivity {
         //Daysto = intent.getStringExtra("daysto");
         //Price = intent.getStringExtra("price");
         //From = intent.getStringExtra("From");
-        infoAdapter = new InfoAdapter(this,R.layout.row_layout);
         SharedPreferences prefs = getSharedPreferences(mn.TAG_NAME, Context.MODE_PRIVATE);
          From = prefs.getString("from", null);
          Price = prefs.getString("price", null);
@@ -70,7 +70,7 @@ public class ShowResaults extends AppCompatActivity {
         @Override
         protected Object doInBackground(Object[] objects) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

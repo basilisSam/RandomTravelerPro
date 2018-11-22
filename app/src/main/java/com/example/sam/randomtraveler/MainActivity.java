@@ -23,7 +23,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
     EditText from,daysFrom,daysTo,price;
     Spinner passengers;
-    public static  String TAG_NAME = "nameKey";
+    public static final String TAG_NAME = "nameKey";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
