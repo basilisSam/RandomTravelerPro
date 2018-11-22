@@ -31,7 +31,7 @@ public class ShowResaults extends AppCompatActivity {
     public String Resaults="";
     public String [] data;
     public String json_string;
-    JSONObject jsonObject;
+    JSONObject  jsonObject;
     JSONArray jsonArray;
     InfoAdapter infoAdapter;
     ListView listView;
@@ -50,7 +50,7 @@ public class ShowResaults extends AppCompatActivity {
         Daysfrom = intent.getStringExtra("daysf");
         Daysto = intent.getStringExtra("daysto");
         Price = intent.getStringExtra("price");
-        From = intent.getStringExtra("From");
+        From = intent.getStringExtra("from");
     }
 
 
