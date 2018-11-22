@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -29,27 +31,30 @@ public class ShowResaults extends AppCompatActivity {
     public String Resaults="";
     public String [] data;
     public TextView textView ;
-   // FetchApi f= new FetchApi();
+
+    public String json_string;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resaults);
       textView = findViewById(R.id.testShow);
         int a=0;
-        /*
+        textView = findViewById(R.id.testShow);
         Intent intent = getIntent();
-
         Daysfrom = intent.getStringExtra("daysf");
         Daysto = intent.getStringExtra("daysto");
         Price = intent.getStringExtra("price");
         From = intent.getStringExtra("From");
+
         list= (ListView)findViewById(R.id.list);
         //f.execute();
-*/
-        if (a==0){
 
-        }
     }
 
     /*
@@ -72,43 +77,16 @@ public class ShowResaults extends AppCompatActivity {
                 }
                 inputs.close();
                 Resaults=sb.toString();
+=======
+        list= (ListView)findViewById(R.id.printList);
+>>>>>>> 7cd01397d36b09e5ff5f3887df9f0a07e61fc513
+*/
 
 
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
-            //try parse json data
-            try{
-                JSONArray ja=new JSONArray(Resaults);
-                JSONObject jo=null;
-                data=new String[ja.length()];
 
 
-                for (int i=0;i<=ja.length();i++){
-                    jo=ja.getJSONObject(i);
-                    data[i]="Απο"+" "+jo.getString("cityFrom")+" "+"Για"+" "+jo.getString("cityΤο");
-                }
 
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-
-            super.onPostExecute(aVoid);
-            list.setAdapter(new ArrayAdapter<String>(ShowResaults.this,android.R.layout.simple_expandable_list_item_1,data));
-        }
-    }
-    */
-
-    AsyncTask asyncTask = new AsyncTask() {
+     AsyncTask asyncTask = new AsyncTask() {
 
 
 
@@ -155,11 +133,46 @@ public class ShowResaults extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object o) {
 
+
             textView.setText(data.toString());
 
+            //textView.setText(o.toString());
+            json_string=o.toString();
+            try {
+
+                jsonObject = new JSONObject(json_string);
+                jsonArray = jsonObject.getJSONArray("data");
+
+                int count = 0;
+                String from,to,price,dateFrom,dateTo;
+                while(count <jsonArray.length())
+                {
+                    JSONObject JO = jsonArray.getJSONObject(count);
+                    from = JO.getString("cityFrom");
+                    to = JO.getString("cityTo");
+                    price = JO.getString("price");
+                    dateFrom = JO.getString("dTimeUTC");
+                    dateTo = JO.getString("dTimeUTC");
+
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
 
         }
     }.execute();
 
+public void parseJSON(View view){
+    if(json_string==null){
+        Toast.makeText(getApplicationContext(),"Not Found",Toast.LENGTH_LONG).show();
+    }
+    else
+    {
+        Intent intent = new Intent (this,ShowResaults.class);
+        intent.putExtra("json_data",json_string);
+        startActivity(intent);
+    }
+    }
 }
