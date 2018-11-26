@@ -1,6 +1,7 @@
 package com.example.sam.randomtraveler;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
     EditText from,daysFrom,daysTo,price;
     Spinner passengers;
+    public static final String TAG_NAME = "nameKey";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +42,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+                SharedPreferences.Editor editor = getSharedPreferences(TAG_NAME,MODE_PRIVATE).edit();
+                editor.putString("from",from.getText().toString());
+                editor.putString("daysf",daysFrom.getText().toString());
+                editor.putString("daysto",daysTo.getText().toString());
+                editor.putString("price",price.getText().toString());
+                editor.apply();
 
                Intent intent = new Intent(MainActivity.this, ShowResaults.class);
-                intent.putExtra("from",from.getText().toString());
-                intent.putExtra("daysf",daysFrom.getText().toString());
-                intent.putExtra("daysto",daysTo.getText().toString());
-                intent.putExtra("price",price.getText().toString());
+              //  intent.putExtra("From",from.getText().toString());
+               // intent.putExtra("daysf",daysFrom.getText().toString());
+                //intent.putExtra("daysto",daysTo.getText().toString());
+                //intent.putExtra("price",price.getText().toString());
 
                 startActivity(intent);
 

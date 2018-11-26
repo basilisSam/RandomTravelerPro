@@ -1,6 +1,8 @@
 package com.example.sam.randomtraveler;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,7 +33,7 @@ public class ShowResaults extends AppCompatActivity {
     public String Resaults="";
     public String [] data;
     public String json_string;
-    JSONObject  jsonObject;
+    JSONObject jsonObject;
     JSONArray jsonArray;
     InfoAdapter infoAdapter;
     ListView listView;
@@ -43,14 +45,20 @@ public class ShowResaults extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resaults);
-        listView = (ListView) findViewById(R.id.listview);
+        MainActivity mn = new MainActivity();
         infoAdapter = new InfoAdapter(this,R.layout.row_layout);
+        listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(infoAdapter);
-        Intent intent = getIntent();
-        Daysfrom = intent.getStringExtra("daysf");
-        Daysto = intent.getStringExtra("daysto");
-        Price = intent.getStringExtra("price");
-        From = intent.getStringExtra("from");
+        //Intent intent = getIntent();
+        //Daysfrom = intent.getStringExtra("daysf");
+        //Daysto = intent.getStringExtra("daysto");
+        //Price = intent.getStringExtra("price");
+        //From = intent.getStringExtra("From");
+        SharedPreferences prefs = getSharedPreferences(mn.TAG_NAME, Context.MODE_PRIVATE);
+         From = prefs.getString("from", null);
+         Price = prefs.getString("price", null);
+         Daysto = prefs.getString("daysto", null);
+        Daysfrom = prefs.getString("daysf", null);
     }
 
 
@@ -61,7 +69,11 @@ public class ShowResaults extends AppCompatActivity {
 
         @Override
         protected Object doInBackground(Object[] objects) {
-
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             OkHttpClient client = new OkHttpClient();
 
