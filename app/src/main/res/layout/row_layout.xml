@@ -29,7 +29,7 @@
         android:textAppearance="?android:textAppearanceLarge"/>
 
     <TextView
-        android:layout_width="195dp"
+        android:layout_width="390dp"
         android:layout_height="75dp"
         android:id="@+id/tx_DateFrom"
         android:layout_below="@+id/tx_Price"
@@ -38,7 +38,7 @@
         android:textAppearance="?android:textAppearanceLarge"/>
 
     <TextView
-        android:layout_width="195dp"
+        android:layout_width="390dp"
         android:layout_height="75dp"
         android:id="@+id/tx_DateTo"
         android:layout_below="@+id/tx_DateFrom"

@@ -26,6 +26,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ShowResaults extends AppCompatActivity {
 
@@ -78,7 +80,7 @@ public class ShowResaults extends AppCompatActivity {
             OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
-                    .url("https://api.skypicker.com/flights?fly_from="+From+"&price_to="+Price+"&nights_in_dst_from="+Daysfrom+"&nights_in_dst_to="+Daysto+"&type_flights=lcc").build();
+                    .url("https://api.skypicker.com/flights?fly_from="+From+"&price_to="+Price+"&nights_in_dst_from="+Daysfrom+"&nights_in_dst_to="+Daysto+"&type_flights=lcc&return=1").build();
 
             Response response = null;
 
@@ -114,8 +116,14 @@ public class ShowResaults extends AppCompatActivity {
                     to = JO.getString("cityTo");
                     price = JO.getString("price");
                     dateFrom = JO.getString("dTimeUTC");
+                    long dv = Long.valueOf(dateFrom)*1000;// its need to be in milisecond
+                    Date df = new java.util.Date(dv);
+                    String dateStart = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(df);
                     dateTo = JO.getString("dTimeUTC");
-                    Info info = new Info(from,to,price,dateFrom,dateTo);
+                    long dd = Long.valueOf(dateTo)*1000;// its need to be in milisecond
+                    Date dc = new java.util.Date(dv);
+                    String dateBack = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(df);
+                    Info info = new Info(from,to,price,dateStart,dateBack);
 
                     infoAdapter.add(info);
 
