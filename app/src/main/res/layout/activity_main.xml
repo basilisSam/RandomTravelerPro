@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/sky">
 
     <Button
         android:id="@+id/button"
@@ -12,13 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/spinner"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="84dp"
+        android:layout_marginEnd="55dp"
         android:layout_marginBottom="51dp"
         android:text="Search"
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:typeface="monospace"
-        tools:background="#56ffff" />
+        android:background="@drawable/sbutton_background" />
 
     <EditText
         android:id="@+id/PriceInput"

@@ -120,7 +120,7 @@ public class ShowResaults extends AppCompatActivity {
                     Date df = new java.util.Date(dv);
                     String dateStart = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(df);
                     dateTo = JO.getString("dTimeUTC");
-                    long dd = Long.valueOf(dateTo)*1000;// its need to be in milisecond
+                    long dd = Long.valueOf(dateTo)*1000;
                     Date dc = new java.util.Date(dv);
                     String dateBack = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(df);
                     Info info = new Info(from,to,price,dateStart,dateBack);
