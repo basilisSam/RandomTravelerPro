@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="510dp"
-    android:background="@drawable/sky">
+    android:background="@drawable/bgword">
 
     <TextView
         android:id="@+id/tx_from"
@@ -9,6 +9,8 @@
         android:layout_height="75dp"
         android:gravity="center"
         android:text="From"
+        android:textColor="#111b87"
+        android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge" />
 
     <TextView
@@ -17,7 +19,9 @@
         android:id="@+id/tx_To"
         android:layout_toRightOf="@+id/tx_from"
         android:text="To"
+        android:textColor="#111b87"
         android:gravity="center"
+        android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>
 
     <TextView
@@ -26,7 +30,9 @@
         android:id="@+id/tx_Price"
         android:layout_below="@+id/tx_from"
         android:text="Price"
+        android:textColor="#111b87"
         android:gravity="center"
+        android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>
 
     <TextView
@@ -35,7 +41,9 @@
         android:id="@+id/tx_DateFrom"
         android:layout_below="@+id/tx_Price"
         android:text="Start"
+        android:textColor="#111b87"
         android:gravity="center"
+        android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>
 
     <TextView
@@ -44,7 +52,9 @@
         android:id="@+id/tx_DateTo"
         android:layout_below="@+id/tx_DateFrom"
         android:text="Return"
+        android:textColor="#111b87"
         android:gravity="center"
+        android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>
 
 
