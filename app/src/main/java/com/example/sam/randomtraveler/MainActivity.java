@@ -42,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                while(price.getText() ==null || daysFrom.getText() ==null || daysTo.getText() == null
-                        || from.getText() == null) {
-                    Toast.makeText(getApplicationContext(), "All fields need to have value", Toast.LENGTH_LONG).show();
-                }
+
                     int df = Integer.valueOf(daysFrom.getText().toString().trim());
                     int dt = Integer.valueOf(daysTo.getText().toString().trim());
                     if(df < dt) {

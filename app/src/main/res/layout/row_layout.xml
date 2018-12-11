@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="650dp"
-    android:background="@drawable/op">
+    android:background="@drawable/om">
 
     <TextView
         android:id="@+id/tx_from"
@@ -25,15 +26,18 @@
         android:textAppearance="?android:textAppearanceLarge"/>
 
     <TextView
+        android:id="@+id/tx_Price"
         android:layout_width="195dp"
         android:layout_height="75dp"
-        android:id="@+id/tx_Price"
         android:layout_below="@+id/tx_from"
-        android:text="Price"
-        android:textColor="#000000"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="-1dp"
         android:gravity="center"
-        android:typeface="serif"
-        android:textAppearance="?android:textAppearanceLarge"/>
+        android:text="Price"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#000000"
+        android:typeface="serif" />
 
     <TextView
         android:layout_width="390dp"
@@ -73,7 +77,9 @@
         android:layout_width="195dp"
         android:layout_height="75dp"
         android:layout_below="@+id/tx_DateTo"
+        android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
+        android:layout_toEndOf="@+id/tx_rfrom"
         android:layout_toRightOf="@+id/tx_rfrom"
         android:gravity="center"
         android:text="To"
@@ -103,12 +109,82 @@
         android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="35dp"
+        android:layout_height="31dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/arrows" />
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="35dp"
+        android:layout_height="31dp"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="314dp"
+        app:srcCompat="@drawable/arrows" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="125dp"
+        android:layout_height="46dp"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="-38dp"
+        app:srcCompat="@drawable/takeoff" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="146dp"
+        android:layout_height="47dp"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="362dp"
+        android:layout_marginEnd="-49dp"
+        app:srcCompat="@drawable/takeoff" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="130dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="127dp"
+        android:layout_marginLeft="127dp"
+        android:layout_marginTop="211dp"
+        app:srcCompat="@drawable/landing1" />
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="140dp"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="125dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="440dp"
+        app:srcCompat="@drawable/landing1" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="84dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="81dp"
+        android:gravity="center"
+        android:text="Price:"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:typeface="serif" />
 
 
 </RelativeLayout>

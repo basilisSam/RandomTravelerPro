@@ -109,7 +109,7 @@ public class ShowResaults extends AppCompatActivity {
                 while(count <jsonArray.length()) {
 
                     JSONObject JO = jsonArray.getJSONObject(count);
-                    price = JO.getString("price");
+                    price = JO.getString("price")+"€";
 
 
 /*
