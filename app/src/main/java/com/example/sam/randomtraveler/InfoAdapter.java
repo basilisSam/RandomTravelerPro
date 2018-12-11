@@ -52,6 +52,11 @@ public class InfoAdapter extends ArrayAdapter {
             infoHolder.tx_Price =(TextView) row.findViewById(R.id.tx_Price);
             infoHolder.tx_DateFrom =(TextView) row.findViewById(R.id.tx_DateFrom);
             infoHolder.tx_DateTo =(TextView) row.findViewById(R.id.tx_DateTo);
+            infoHolder.tx_rfrom =(TextView) row.findViewById(R.id.tx_rfrom);
+            infoHolder.tx_rTo =(TextView) row.findViewById(R.id.tx_rTo);
+            infoHolder.tx_rDateFrom =(TextView) row.findViewById(R.id.tx_rDateFrom);
+            infoHolder.tx_rDateTo =(TextView) row.findViewById(R.id.tx_rDateTo);
+
             row.setTag(infoHolder);
         }else
         {
@@ -64,10 +69,15 @@ public class InfoAdapter extends ArrayAdapter {
         infoHolder.tx_Price.setText(info.getPrice());
         infoHolder.tx_DateFrom.setText(info.getDateFrom());
         infoHolder.tx_DateTo.setText(info.getDateTo());
+        infoHolder.tx_rfrom.setText(info.getRfrom());
+        infoHolder.tx_rTo.setText(info.getRto());
+        infoHolder.tx_rDateFrom.setText(info.getRdateFrom());
+        infoHolder.tx_rDateTo.setText(info.getRdateTo());
+
         return row;
     }
 
     static class InfoHolder{
-        TextView tx_from,tx_To,tx_Price,tx_DateFrom,tx_DateTo;
+        TextView tx_from,tx_To,tx_Price,tx_DateFrom,tx_DateTo,tx_rfrom,tx_rTo,tx_rDateFrom,tx_rDateTo;
     }
 }

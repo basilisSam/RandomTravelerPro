@@ -1,14 +1,18 @@
 package com.example.sam.randomtraveler;
 
 public class Info {
-    private String from,to,price,dateFrom,dateTo;
+    private String from,to,price,dateFrom,dateTo,rfrom,rto,rdateFrom,rdateTo;
 
-    public Info(String from,String to,String price,String dateFrom,String dateTo){
+    public Info(String from,String to,String price,String dateFrom,String dateTo,String rfrom,String rto,String rdateFrom,String rdateTo){
         this.setFrom(from);
         this.setTo(to);
         this.setPrice(price);
         this.setDateFrom(dateFrom);
         this.setDateTo(dateTo);
+        this.setRfrom(rfrom);
+        this.setRto(rto);
+        this.setRdateFrom(rdateFrom);
+        this.setRdateTo(rdateTo);
     }
 
     public String getFrom() {
@@ -49,5 +53,37 @@ public class Info {
 
     public void setDateTo(String dateTo) {
         this.dateTo = dateTo;
+    }
+
+    public String getRfrom() {
+        return rfrom;
+    }
+
+    public void setRfrom(String rfrom) {
+        this.rfrom = rfrom;
+    }
+
+    public String getRto() {
+        return rto;
+    }
+
+    public void setRto(String rto) {
+        this.rto = rto;
+    }
+
+    public String getRdateFrom() {
+        return rdateFrom;
+    }
+
+    public void setRdateFrom(String rdateFrom) {
+        this.rdateFrom = rdateFrom;
+    }
+
+    public String getRdateTo() {
+        return rdateTo;
+    }
+
+    public void setRdateTo(String rdateTo) {
+        this.rdateTo = rdateTo;
     }
 }

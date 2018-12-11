@@ -51,11 +51,6 @@ public class ShowResaults extends AppCompatActivity {
         infoAdapter = new InfoAdapter(this,R.layout.row_layout);
         listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(infoAdapter);
-        //Intent intent = getIntent();
-        //Daysfrom = intent.getStringExtra("daysf");
-        //Daysto = intent.getStringExtra("daysto");
-        //Price = intent.getStringExtra("price");
-        //From = intent.getStringExtra("From");
         SharedPreferences prefs = getSharedPreferences(mn.TAG_NAME, Context.MODE_PRIVATE);
          From = prefs.getString("from", null);
          Price = prefs.getString("price", null);
@@ -107,11 +102,17 @@ public class ShowResaults extends AppCompatActivity {
                 jsonObject = new JSONObject(json_string);
                 jsonArray = jsonObject.getJSONArray("data");
 
+
                 int count = 0;
-                String from,to,price,dateFrom,dateTo;
-                while(count <jsonArray.length())
-                {
+
+                String from,to,price,dateFrom,dateTo,dtimeroute,atimeroute,routefrom,routeto,returnFlag;
+                while(count <jsonArray.length()) {
+
                     JSONObject JO = jsonArray.getJSONObject(count);
+                    price = JO.getString("price");
+
+
+/*
                     from = JO.getString("cityFrom");
                     to = JO.getString("cityTo");
                     price = JO.getString("price");
@@ -121,16 +122,47 @@ public class ShowResaults extends AppCompatActivity {
                     String dateStart = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(df);
                     dateTo = JO.getString("dTimeUTC");
                     long dd = Long.valueOf(dateTo)*1000;
-                    Date dc = new java.util.Date(dv);
-                    String dateBack = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(df);
-                    Info info = new Info(from,to,price,dateStart,dateBack);
+                    Date dc = new java.util.Date(dd);
+                    String dateBack = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(dc);
+                    */
+                    JSONArray route = JO.getJSONArray("route");
 
-                    infoAdapter.add(info);
+                    JSONObject JOR = route.getJSONObject(0);
+                    JSONObject test = route.getJSONObject(1);
+                    returnFlag = test.getString("return");
+                    if (returnFlag.equals("1")) {
 
-                    count++;
+                        atimeroute = JOR.getString("aTimeUTC");
+                        long dv = Long.valueOf(atimeroute) * 1000;// its need to be in milisecond
+                        Date df = new Date(dv);
+                        String dateStart = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(df);
+                        dtimeroute = JOR.getString("dTimeUTC");
+                        //an theloume na vlepoume analitika prepei na to kanoume etsi
+                        routefrom = JOR.getString("cityFrom");
+                        routeto = JOR.getString("cityTo");
+                        long dd = Long.valueOf(dtimeroute) * 1000;
+                        Date dc = new Date(dd);
+                        String dateBack = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(dc);
+                        from = test.getString("cityFrom");
+                        to = test.getString("cityTo");
+                        dateFrom = test.getString("dTimeUTC");
+                        long dtime = Long.valueOf(dateFrom) * 1000;// its need to be in milisecond
+                        Date dt = new Date(dtime);
+                        String ds = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(dt);
+                        dateTo = test.getString("aTimeUTC");
+                        long ttime = Long.valueOf(dateTo) * 1000;// its need to be in milisecond
+                        Date tt = new Date(ttime);
+                        String ts = new SimpleDateFormat("dd'/'MM'/'yyyy  'at' HH:mm:ss z ").format(tt);
+                        // Info info = new Info(from,to,price,dateStart,dateBack);
+                        Info info = new Info(routefrom, routeto, price, dateBack, dateStart, from, to, ds, ts);
+
+                        infoAdapter.add(info);
+                    }
 
 
-                }
+                        count++;
+                    }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

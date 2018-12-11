@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -41,21 +42,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                while(price.getText() ==null || daysFrom.getText() ==null || daysTo.getText() == null
+                        || from.getText() == null) {
+                    Toast.makeText(getApplicationContext(), "All fields need to have value", Toast.LENGTH_LONG).show();
+                }
+                    int df = Integer.valueOf(daysFrom.getText().toString().trim());
+                    int dt = Integer.valueOf(daysTo.getText().toString().trim());
+                    if(df < dt) {
 
-                SharedPreferences.Editor editor = getSharedPreferences(TAG_NAME,MODE_PRIVATE).edit();
-                editor.putString("from",from.getText().toString());
-                editor.putString("daysf",daysFrom.getText().toString());
-                editor.putString("daysto",daysTo.getText().toString());
-                editor.putString("price",price.getText().toString());
-                editor.apply();
+                        SharedPreferences.Editor editor = getSharedPreferences(TAG_NAME, MODE_PRIVATE).edit();
+                        editor.putString("from", from.getText().toString());
+                        editor.putString("daysf", daysFrom.getText().toString());
+                        editor.putString("daysto", daysTo.getText().toString());
+                        editor.putString("price", price.getText().toString());
+                        editor.apply();
 
-               Intent intent = new Intent(MainActivity.this, ShowResaults.class);
-              //  intent.putExtra("From",from.getText().toString());
-               // intent.putExtra("daysf",daysFrom.getText().toString());
-                //intent.putExtra("daysto",daysTo.getText().toString());
-                //intent.putExtra("price",price.getText().toString());
+                        Intent intent = new Intent(MainActivity.this, ShowResaults.class);
+                        //  intent.putExtra("From",from.getText().toString());
+                        // intent.putExtra("daysf",daysFrom.getText().toString());
+                        //intent.putExtra("daysto",daysTo.getText().toString());
+                        //intent.putExtra("price",price.getText().toString());
 
-                startActivity(intent);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(getApplicationContext(),"Days to must be greater than days from",Toast.LENGTH_LONG).show();
+                    }
+
+
+
+
 
 
             }

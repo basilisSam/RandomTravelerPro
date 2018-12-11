@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="510dp"
-    android:background="@drawable/bgword">
+    android:layout_width="match_parent" android:layout_height="650dp"
+    android:background="@drawable/op">
 
     <TextView
         android:id="@+id/tx_from"
@@ -9,7 +9,7 @@
         android:layout_height="75dp"
         android:gravity="center"
         android:text="From"
-        android:textColor="#111b87"
+        android:textColor="#000000"
         android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge" />
 
@@ -19,7 +19,7 @@
         android:id="@+id/tx_To"
         android:layout_toRightOf="@+id/tx_from"
         android:text="To"
-        android:textColor="#111b87"
+        android:textColor="#000000"
         android:gravity="center"
         android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>
@@ -30,7 +30,7 @@
         android:id="@+id/tx_Price"
         android:layout_below="@+id/tx_from"
         android:text="Price"
-        android:textColor="#111b87"
+        android:textColor="#000000"
         android:gravity="center"
         android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>
@@ -41,7 +41,7 @@
         android:id="@+id/tx_DateFrom"
         android:layout_below="@+id/tx_Price"
         android:text="Start"
-        android:textColor="#111b87"
+        android:textColor="#000000"
         android:gravity="center"
         android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>
@@ -52,7 +52,53 @@
         android:id="@+id/tx_DateTo"
         android:layout_below="@+id/tx_DateFrom"
         android:text="Return"
-        android:textColor="#111b87"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:typeface="serif"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/tx_rfrom"
+        android:layout_below="@+id/tx_DateTo"
+        android:layout_width="195dp"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:text="From"
+        android:textColor="#000000"
+        android:typeface="serif"
+        android:textAppearance="?android:textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tx_rTo"
+        android:layout_width="195dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/tx_DateTo"
+        android:layout_marginLeft="0dp"
+        android:layout_toRightOf="@+id/tx_rfrom"
+        android:gravity="center"
+        android:text="To"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#000000"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="390dp"
+        android:layout_height="75dp"
+        android:id="@+id/tx_rDateFrom"
+        android:layout_below="@+id/tx_rTo"
+        android:text="Start"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:typeface="serif"
+        android:textAppearance="?android:textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="390dp"
+        android:layout_height="75dp"
+        android:id="@+id/tx_rDateTo"
+        android:layout_below="@+id/tx_rDateFrom"
+        android:text="Return"
+        android:textColor="#000000"
         android:gravity="center"
         android:typeface="serif"
         android:textAppearance="?android:textAppearanceLarge"/>

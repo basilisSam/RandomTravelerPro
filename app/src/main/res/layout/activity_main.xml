@@ -23,6 +23,7 @@
 
     <EditText
         android:id="@+id/PriceInput"
+        android:inputType="number"
         android:layout_width="74dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -32,8 +33,7 @@
         android:layout_marginEnd="276dp"
         android:layout_marginRight="276dp"
         android:ems="10"
-        android:hint="Price"
-        android:inputType="textPersonName" />
+        android:hint="Price" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -66,6 +66,7 @@
         android:layout_marginTop="120dp"
         android:ems="10"
         android:hint="From"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:inputType="textPersonName" />
 
     <EditText
@@ -77,7 +78,7 @@
         android:layout_marginBottom="196dp"
         android:ems="10"
         android:hint="MinDays"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/MaxDays"
@@ -89,6 +90,6 @@
         android:layout_marginBottom="197dp"
         android:ems="10"
         android:hint="MaxDays"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
 </RelativeLayout>
